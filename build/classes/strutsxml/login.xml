@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">   
+<!-- 作成者 : 李 珍瑞 -->
+<!-- 作成日付 : 2016.04.15 -->
+<struts>
+  <constant name="struts.i18n.encoding" value="UTF-8" />
+  <constant name="struts.devMode" value="true" />
+ <package name="login" extends="struts-default">
+ 
+ 	<!-- Error処理 -->
+ 	<global-results>
+		<result name="error">/WEB-INF/jsp/error.jsp</result>
+	</global-results>
+	<global-exception-mappings>
+		<exception-mapping result="error" exception="java.lang.Exception" />
+	</global-exception-mappings>
+		
+		<!-- 初期ログイン画面 --> <!-- Login Page-->
+		<action name="GoToSignUp" class="com.myapp.action.LoginAction" method="signUpPage">
+			<result name="success">/WEB-INF/jsp/signup.jsp</result>
+		</action>
+		
+		<!-- 会員登録画面 --> <!-- Sign Up Page -->
+		<action name="GoToSignUpInfor" class="com.myapp.action.LoginAction" method="information">
+			<result name="success">/WEB-INF/jsp/signupInfor.jsp</result>
+		</action>
+		
+		<!-- 会員登録情報の確認画面 -->	 <!-- Sign Up Infor Check Page -->	
+		<action name="CompleteSignUp" class="com.myapp.action.LoginAction" method="SignUp">
+			<result name="success">/WEB-INF/jsp/signupComplete.jsp</result>
+		</action>	
+		
+ </package>
+</struts>
+
+
