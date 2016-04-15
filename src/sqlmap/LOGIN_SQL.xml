@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!-- 作成者 : 李 珍瑞 -->
+<!-- 作成日付 : 2016.04.15 -->
+<sqlMap>
+  <typeAlias alias="login" type="com.myapp.model.LoginVo"/>
+   <resultMap id="LoginResult" class="login" >
+	    <result property="lastName" column="lastName" columnIndex="1"/>
+	    <result property="authentication" column="authentication" columnIndex="2"/>
+	    <result property="id" column="id" columnIndex="3"/>
+	    <result property="firstName" column="firstName" columnIndex="4"/>
+	    <result property="email" column="email" columnIndex="5"/>
+	    <result property="nickName" column="nickName" columnIndex="6"/>
+	    <result property="password" column="password" columnIndex="7"/>
+  </resultMap>
+
+  <!-- 仮登録, 가등록, First Sign Up -->		
+  <insert id="SiginUpReady" parameterClass="login">
+	INSERT INTO `user` (
+	`lastname`, `createtime`,`authentication`,
+	`firstname`, `email`, `nickname`, `password`
+	) VALUES (
+	#lastName#, now(), #authentication#,
+	#firstName#, #email#, #nickName#, #password#
+	)
+  </insert>  
+
+</sqlMap>
