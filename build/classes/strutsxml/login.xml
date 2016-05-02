@@ -5,7 +5,7 @@
 <struts>
   <constant name="struts.i18n.encoding" value="UTF-8" />
   <constant name="struts.devMode" value="true" />
- <package name="login" extends="struts-default">
+ <package name="login" extends="struts-default, json-default">
  
  	<!-- Error処理 -->
  	<global-results>
@@ -16,19 +16,39 @@
 	</global-exception-mappings>
 		
 		<!-- 初期ログイン画面 --> <!-- Login Page-->
-		<action name="GoToSignUp" class="com.myapp.action.LoginAction" method="signUpPage">
+		<action name="GoToSignUp" class="com.myapp.action.LoginAction" method="SignUpPage">
 			<result name="success">/WEB-INF/jsp/signup.jsp</result>
 		</action>
-		
-		<!-- 会員登録画面 --> <!-- Sign Up Page -->
-		<action name="GoToSignUpInfor" class="com.myapp.action.LoginAction" method="information">
+
+		<!--　メール 重複検査 -->
+		<action name="idcheck" class="com.myapp.action.IdCheckAction" >
+			<result type="json" />
+		</action>		
+		<action name="SignUpCheck" class="com.myapp.action.SignUpCheckAction">
 			<result name="success">/WEB-INF/jsp/signupInfor.jsp</result>
-		</action>
+			<result name="input">/WEB-INF/jsp/signup.jsp</result>
+		</action>		
 		
-		<!-- 会員登録情報の確認画面 -->	 <!-- Sign Up Infor Check Page -->	
-		<action name="CompleteSignUp" class="com.myapp.action.LoginAction" method="SignUp">
+		<!-- メール結果ページ  -->
+		<action name="CompleteSignUp" class="com.myapp.action.EmailAction">
 			<result name="success">/WEB-INF/jsp/signupComplete.jsp</result>
 		</action>	
+		<!-- 認証メールもらってログインする時の状態変更 -->
+		<action name="UpdateCheck" class="com.myapp.action.LoginAction" method="SignUpCheck">
+			<result name="success">/WEB-INF/jsp/finalLogin.jsp</result>
+		</action>
+
+		 <action name="Update" class="com.myapp.action.LoginAction" method="Auth">
+			<result name="success">/WEB-INF/jsp/main.jsp</result>
+			<result name="input">/WEB-INF/jsp/finalLogin.jsp</result>
+			<result name="error">/WEB-INF/jsp/main2.jsp</result>
+		</action>
+
+		<!-- Main Login Action -->
+ 		<action name="Login" class="com.myapp.action.MainLoginAction">
+			<result name="success">/WEB-INF/jsp/main.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>						
 		
  </package>
 </struts>

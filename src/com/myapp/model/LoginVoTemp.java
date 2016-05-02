@@ -1,10 +1,13 @@
 /**
+ * 
+ */
+/**
  * @author JIN
  *
  */
 package com.myapp.model;
 
-public class LoginVo {
+public class LoginVoTemp {
 	private String lastName;
 	private String firstName;
 	private String nickName;
@@ -15,8 +18,7 @@ public class LoginVo {
 	private String authentication;
 	private String role;
 	private boolean idCheck;
-	
-	
+
 	public boolean isIdCheck() {
 		return idCheck;
 	}
@@ -77,6 +79,4 @@ public class LoginVo {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-
 }

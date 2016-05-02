@@ -11,7 +11,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login &amp; Register</title>
+        <title>新規会員登録 &amp; </title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -46,9 +46,8 @@
                 	
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Register Forms</strong></h1>
+                            <h1><strong>新規会員登録</strong></h1>
                             <div class="description">
-                            	<h1>情報確認</h1>
                             </div>
                         </div>
                     </div>
@@ -59,8 +58,8 @@
                         	<div class="form-box">
                         		<div class="form-top">
 	                        		<div class="form-top-left">
-	                        			<h3>Sign up now</h3>
-	                            		<p>Fill in the form below to get instant access:</p>
+	                        			<h3>情報確認</h3>
+	                            		<p>登録内容をご確認し「送信」ボタンを押してください。</p>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-pencil"></i>
@@ -68,29 +67,30 @@
 	                            </div>
 	                            
 	                            <div class="form-bottom">
-				                    <form role="form" action="CompleteSignUp.action" method="get" class="registration-form">
+				                    <form role="form" action="CompleteSignUp.action" method="post" class="registration-form">
  				                        <div class="form-group">
-				                        	<label class="" for="form-last-name">Last name</label>
+				                        	<label class="" for="form-last-name">姓</label>
 				                        	<input type="text" name="lastName" value="${lastName}" class="form-last-name form-control" id="form-last-name" readonly>
 				                        </div>
  				                        <div class="form-group">
-				                        	<label class="" for="form-first-name">名前 First name</label>
+				                        	<label class="" for="form-first-name">名</label>
 				                        	<input type="text" name="firstName" value="${firstName}" class="form-first-name form-control" id="form-first-name" readonly>
 				                        </div>
 				                        <div class="form-group">
-				                        	<label class="" for="form-email">Email</label>
+				                        	<label class="" for="form-email">メールアドレス</label>
 				                        	<input type="text" name="email" value="${email}" class="form-email form-control" id="form-email" readonly>
 				                        </div>
 				                        <div class="form-group">
-				                        	<label class="" for="form-nick-name">Nick Name</label>
+				                        	<label class="" for="form-nick-name">ニックネーム</label>
 				                        	<input type="text" name="nickName" value="${nickName}" class="form-email form-control" id="form-nick-name" readonly>
 				                        </div>	
 				                        <div class="form-group">
-				                        	<label class="" for="form-password">Password</label>
-				                        	<input type="text" name="password" value="${password}" class="form-password form-control" id="form-password" readonly>
-				                        </div>		
-				                        <button type="submit" class="btn">Sign me up!</button>
+				                        	<label class="sr-only" for="form-password">パスワード</label>
+				                        	<input type="hidden" name="password" value="${password}" class="form-password form-control" id="form-password" readonly>
+				                        </div>
+				                        <button type="submit" class="btn">送信</button><br><br>
 				                    </form>
+				                        <a class="btn btn-danger btn-lg btn-block" href="GoToSignUp.action" role="button">戻る</a>
 			                    </div>
                         	</div>
                         	
@@ -110,7 +110,7 @@
         			
         			<div class="col-sm-8 col-sm-offset-2">
         				<div class="footer-border"></div>
-        				<p>Made by Interline at <a href="http://github/platonic7" target="_blank"><strong>JIN</strong></a> 
+        				<p>Made by Interline at <a href="http://www.interline.co.jp" target="_blank"><strong>JIN</strong></a> 
         					having a lot of fun. <i class="fa fa-smile-o"></i></p>
         			</div>
         			

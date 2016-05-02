@@ -46,10 +46,6 @@
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>会員ログイン</strong></h1>
                             <div class="description">
-                            	<p>
-	                            	登録がまだの方は
-	                            	<a href="GoToSignUp.action"><strong>こちら</strong></a>へ
-                            	</p>
                             </div>
                         </div>
                     </div>
@@ -65,21 +61,41 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="Login.action" method="post" class="login-form">
-			                    	<p>${ actionErrors[0] }</p>
+			                        	<p>${ actionErrors[0] }</p>
+			                    <form role="form" action="Update.action" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
 			                        	<input type="text" name="email" placeholder="例：test@example.com" class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="password" placeholder="パスワード" class="form-password form-control" id="form-password">
+			                        	<label class="sr-only" for="form-password">Password </label>
+			                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
 			                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-password">Password</label>
+				                        	<input type="hidden" name="authentication" value="${authentication}" class="form-password form-control" id="form-password" >
+				                        </div>					                        	
 			                        <button type="submit" class="btn">ログイン</button>
 			                    </form>
 		                    </div>
                         </div>
                     </div>
+<!--                     <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login">
+                        	<h3>...or login with:</h3>
+                        	<div class="social-login-buttons">
+	                        	<a class="btn btn-link-2" href="#">
+	                        		<i class="fa fa-facebook"></i> Facebook
+	                        	</a>
+	                        	<a class="btn btn-link-2" href="#">
+	                        		<i class="fa fa-twitter"></i> Twitter
+	                        	</a>
+	                        	<a class="btn btn-link-2" href="#">
+	                        		<i class="fa fa-google-plus"></i> Google Plus
+	                        	</a>
+                        	</div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
             
