@@ -2,22 +2,25 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
 "http://www.ibatis.com/dtd/sql-map-2.dtd">
 <!-- 作成者 : 李 珍瑞 -->
-<!-- 作成日付 : 2016.04.15 -->
+<!-- 作成日付 : 2016.04.08 -->
 <sqlMap>
   <typeAlias alias="login" type="com.myapp.model.LoginVo"/>
    <resultMap id="LoginResult" class="login" >
-	    <result property="lastName" column="lastName" columnIndex="1"/>
-	    <result property="authentication" column="authentication" columnIndex="2"/>
-	    <result property="id" column="id" columnIndex="3"/>
-	    <result property="firstName" column="firstName" columnIndex="4"/>
-	    <result property="email" column="email" columnIndex="5"/>
-	    <result property="nickName" column="nickName" columnIndex="6"/>
-	    <result property="password" column="password" columnIndex="7"/>
+    <result property="lastName" column="lastName" columnIndex="1"/>
+    <result property="authentication" column="authentication" columnIndex="2"/>
+    <result property="firstName" column="firstName" columnIndex="4"/>
+    <result property="email" column="email" columnIndex="5"/>
+    <result property="nickName" column="nickName" columnIndex="6"/>
+    <result property="password" column="password" columnIndex="7"/>
+    <result property="role" column="role" columnIndex="8"/>
   </resultMap>
-
-  <!-- 仮登録, 가등록, First Sign Up -->		
+  <select id="GetEmailOne2" parameterClass="String" resultMap="LoginResult">
+	  select * from user 
+	  where email = #email#
+  </select>  
+  
   <insert id="SiginUpReady" parameterClass="login">
-	INSERT INTO `user` (
+	INSERT INTO `fakeUser` (
 	`lastname`, `createtime`,`authentication`,
 	`firstname`, `email`, `nickname`, `password`
 	) VALUES (
@@ -26,4 +29,49 @@
 	)
   </insert>  
 
+  <insert id="FirstLogin" parameterClass="login">
+	INSERT INTO `user` (
+	`lastname`, `createtime`,`authentication`,
+	`firstname`, `email`, `nickname`, `password`,`role`
+	) VALUES (
+	#lastName#, now(), #authentication#,
+	#firstName#, #email#, #nickName#, #password#,"ROLE_USER"
+	)
+  </insert>   
+
+  <select id="GetId" parameterClass="String" resultMap="LoginResult">
+	  select * from fakeUser 
+	  where authentication = #authentication#
+  </select>  
+  
+  <typeAlias alias="login2" type="com.myapp.model.LoginVoTemp"/>
+   <resultMap id="LoginResult2" class="login2" >
+    <result property="lastName" column="lastName" columnIndex="1"/>
+    <result property="authentication" column="authentication" columnIndex="2"/>
+    <result property="role" column="role" columnIndex="4"/>
+    <result property="email" column="email" columnIndex="5"/>
+    <result property="password" column="password" columnIndex="6"/>
+    <result property="firstName" column="firstName" columnIndex="7"/>
+    <result property="nickName" column="nickName" columnIndex="8"/>
+  </resultMap>
+  <select id="GetEmailOne" parameterClass="String" resultMap="LoginResult2">
+	  select * from fakeUser 
+	  where authentication = #authentication#
+  </select> 
+
+  <typeAlias alias="login3" type="com.myapp.model.LoginVoTemp"/>
+   <resultMap id="LoginResult3" class="login3" >
+    <result property="lastName" column="lastName" columnIndex="1"/>
+    <result property="authentication" column="authentication" columnIndex="2"/>
+    <result property="idCheck" column="idCheck" columnIndex="3"/>
+    <result property="role" column="role" columnIndex="4"/>
+    <result property="email" column="email" columnIndex="5"/>
+    <result property="password" column="password" columnIndex="6"/>
+    <result property="firstName" column="firstName" columnIndex="7"/>
+    <result property="nickName" column="nickName" columnIndex="8"/>
+  </resultMap>
+  <select id="GetEmailOneUser" parameterClass="String" resultMap="LoginResult3">
+	  select * from user 
+	  where email = #email#
+  </select> 
 </sqlMap>
